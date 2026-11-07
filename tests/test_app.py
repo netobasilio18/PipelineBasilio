@@ -13,3 +13,6 @@ def test_busca_de_alunos_por_nome():
 
     assert resposta.status_code == 200
     assert resposta.get_json() == ["Ana", "Daniel"]
+
+def test_erro_proposital():
+    assert 2 + 2 == 5
