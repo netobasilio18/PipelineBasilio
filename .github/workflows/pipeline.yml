@@ -38,9 +38,10 @@ jobs:
 
       - name: Verificar segredos no codigo
         run: |
-          curl -sSfL https://raw.githubusercontent.com/gitleaks/gitleaks/master/scripts/install.sh | bash -s -- -b /tmp
-          /tmp/gitleaks detect --source . --no-git --redact --exit-code 1
-
+          docker run --rm \
+            -v "$PWD:/repo" \
+            ghcr.io/gitleaks/gitleaks:latest \
+            detect --source=/repo --no-git --redact --exit-code=1
 
   deploy:
     name: Deploy no Staging
