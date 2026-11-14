@@ -36,3 +36,18 @@ jobs:
       - name: Executar testes
         run: python -m pytest -v
 
+
+  deploy:
+    name: Deploy no Staging
+    needs: testes
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v4
+
+      - name: Confirmar staging
+        run: echo "Etapa de staging executada com sucesso!"
