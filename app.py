@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-ALUNOS = ["Ana", "Bruno", "Carla", "Daniel"]
+ALUNOS = ["Pedro", "Bruno", "Carla", "Daniel"]
 
 
 @app.get("/")
